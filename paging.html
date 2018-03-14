@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>分页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/lodash.js/4.17.4/lodash.js"></script>
+</head>
+<style>
+    .li1,
+    .li2,
+    .li3,
+    .li4,
+    .li5,
+    .li6 {
+        float: left;
+        list-style: none;
+        width: 28px;
+        height: 28px;
+        border: 1px solid #D3DCE6;
+        cursor: pointer;
+        text-align: center;
+        font-family: HelveticaNeue;
+        font-size: 13px;
+        color: #475669;
+        letter-spacing: 0;
+        line-height: 28px;
+    }
+    
+    .liimg,
+    .liimg1 {
+        float: left;
+        list-style: none;
+        width: 28px;
+        height: 28px;
+        border: 1px solid #D3DCE6;
+        cursor: pointer;
+        text-align: center;
+        font-family: HelveticaNeue;
+        font-size: 13px;
+        color: #475669;
+        letter-spacing: 0;
+        line-height: 28px;
+    }
+    
+    .imgs {
+        transform: rotate(180deg);
+    }
+</style>
+
+<body>
+    <ul class="ul">
+        <li class="liimg"><img src=" img/icon_back_month.png " style="display: inline-block; vertical-align: middle;"></li>
+        <li class="li1 ">1</li>
+        <li class="li2 ">2</li>
+        <li class="li3 ">3</li>
+        <li class="li4 ">4</li>
+        <li class="li5 ">...</li>
+        <li class="li6 ">50</li>
+        <li class="liimg1"><img class="imgs" src=" img/icon_back_month.png " style="display: inline-block; vertical-align: middle;"></li>
+    </ul>
+
+</body>
+<script>
+    $(document).ready(function() {
+        $(".li6").html(10);
+        if ($(".li6").html() < 3) {
+            $(".li3").hide();
+            $(".li4").hide();
+            $(".li5").hide();
+            $(".li6").hide();
+        }
+    })
+    var num = 10;
+    var i = 1;
+    var q = 2;
+    var w = 3;
+    var e = 4;
+    $(".liimg1").click(function() {
+        addition();
+    });
+    //减
+    $(".liimg").click(function() {
+        subtraction();
+    });
+    $(".li4").click(function() {
+        addition();
+    })
+    $(".li1").click(function() {
+        subtraction();
+    })
+
+    function subtraction() {
+        if (i > 1) {
+            for (var j = 0; j < 1; j++) {
+                i--;
+                q--;
+                w--;
+                e--;
+            }
+            $(".li1").html(i);
+            $(".li2").html(q);
+            $(".li3").html(w);
+            $(".li4").html(e);
+
+        }
+        if (e < num && e > 1) {
+            $(".li5").show();
+            $(".li6").show();
+        }
+    }
+
+    function addition() {
+        if (e < num - 1) {
+            for (var j = 0; j < 1; j++) {
+                i++;
+                q++;
+                w++;
+                e++;
+            }
+            $(".li1").html(i);
+            $(".li2").html(q);
+            $(".li3").html(w);
+            $(".li4").html(e);
+        }
+        if (e == num - 1) {
+            $(".li5").hide();
+            // $(".li6").hide();
+        }
+
+    }
+</script>
+
+</html>
